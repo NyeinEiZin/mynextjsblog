@@ -1,7 +1,8 @@
-import type { NextPage } from 'next'
+import Link from "next/link"
 import Head from 'next/head'
 import styled from '@emotion/styled'
 import {InferGetStaticPropsType} from "next";
+import {FeedbackForm} from "@components/FeedbackForm";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -59,13 +60,19 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
         <BlogTitle>
           Welcome to <a href="https://nextjs.org">{title}</a>
         </BlogTitle>
+          <Link href="/about">
+              <a>About this blog</a>
+          </Link>
           <List>
               {posts.map((post) => (
-                  <ListItem key={post.id}>
-                      <PostTitle>{post.title}</PostTitle>
-                  </ListItem>
+                  <Link href="/posts/[id]" as={`/posts/${post.id}`}>
+                      <ListItem key={post.id}>
+                          <PostTitle>{post.title}</PostTitle>
+                      </ListItem>
+                  </Link>
               ))}
           </List>
+          <FeedbackForm/>
       </Main>
     </Container>
   )
