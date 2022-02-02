@@ -52,7 +52,7 @@ export default function Home({ posts }: InferGetStaticPropsType<typeof getStatic
   return (
     <Container>
       <Head>
-        <title>Create Next App</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
